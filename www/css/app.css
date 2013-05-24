@@ -1,0 +1,163 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  background: radial-gradient(ellipse at center, rgba(231,76,60,1) 0%,rgba(192,57,43,1) 100%);
+  color: #fff;
+  font-family: MozTT, sans-serif;
+  font-size: 16px;
+  font-size: 1.4rem;
+  font-weight: 300;
+  margin: 0;
+  -moz-tap-highlight-color: rgba(0,0,0,0);
+  tap-highlight-color: rgba(0,0,0,0);
+}
+
+h1, h2, h3, h4, h5, h6 { font-weight: 300; }
+
+h1 {
+  font-size: 3rem;
+}
+
+a {
+  color: #FFA49E;
+  text-decoration: none;
+  text-shadow: 0px 1px 1px rgba(0,0,0,.3);
+}
+a:hover {
+  color: #fff;
+}
+
+input, button, select, textarea {
+  border-radius: 0;
+  box-shadow: none;
+}
+input[type=text], textarea, select {
+  border: none;
+  font-family: MozTT, sans-serif;
+  font-size: 1.3rem;
+  font-weight: 300;
+  padding: .7rem .8rem;
+}
+
+
+/**
+ * View Specific Styles
+ */
+#view-todos > .view-content {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+#view-add > .view-content {
+  margin-top: 2rem;
+}
+#view-add > .view-content > .wrapper {
+  overflow: hidden;
+  margin: 0 auto;
+  max-width: 800px;
+  width: 100%;
+}
+#view-add input[name=task] {
+  width: 100%;
+}
+#view-add .options {
+  margin: 0 0 .5rem 0;
+  text-align: right;
+}
+#view-add .options li {
+  margin: .5rem 0;
+}
+#view-add .options a {
+  padding: .4rem;
+}
+
+
+/**
+ * Modules
+ */
+[role=region] {
+  background: radial-gradient(ellipse at center, rgba(231,76,60,1) 0%,rgba(192,57,43,1) 100%);
+  top: 0; right: 0; bottom: 0; left: 0;
+  position: fixed;
+}
+[role=region] > header {
+  margin: .5rem 0 1rem 0;
+  text-align: center;
+}
+[role=region] > header > h1 {
+  margin: 0;
+  text-shadow: 0px 1px 1px rgba(0,0,0,.4);
+}
+[role=region] > .view-content {
+  margin: 0 1rem 4rem 1rem;
+}
+[role=region] > footer {
+  background: rgba(0,0,0,.2);
+  right: 0; bottom: 0; left: 0;
+  position: fixed;
+  text-align: center;
+}
+[role=region] > footer > menu[type=toolbar] {
+  margin: 0;
+  padding: 0;
+}
+
+menu[type=toolbar] > [role=menuitem] {
+  border: none;
+  width: 3.5rem;
+  height: 3.5rem;
+}
+menu[type=toolbar] > [role=menuitem]:disabled {
+  opacity: .2;
+}
+menu[type=toolbar] > [role=menuitem]:hover {
+  background-color: rgba(255,255,255,.1);
+}
+menu[type=toolbar] > .btn-done {
+  background: url(../img/check.svg) no-repeat center center;
+}
+menu[type=toolbar] > .btn-add {
+  background: url(../img/add.svg) no-repeat center center;
+}
+menu[type=toolbar] > .btn-del {
+  background: url(../img/del.svg) no-repeat center center;
+}
+
+.todo-list > li {
+  border-bottom: 1px solid rgba(255,255,255,.1);
+}
+.todo-list label {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  display: block;
+  padding: 1rem;
+}
+.todo-list > li:last-child,
+.todo-list > li:last-child > label {
+  border-bottom: none;
+}
+.todo-list label > input[type=checkbox] {
+
+  transition: all .5s;
+}
+.todo-list label > span {
+  transition: all .5s;
+}
+.todo-list label > input[type=checkbox]:checked + span {
+  text-decoration: line-through;
+  opacity: .4;
+}
+
+
+/**
+ * Utility
+ */
+.reset-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+[aria-hidden=true] {
+  display: none;
+}
