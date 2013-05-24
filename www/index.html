@@ -5,21 +5,22 @@
   <script defer data-main="js/app" src="js/lib/require.js"></script>
 </head>
 <body role="application">
-  <section id="view-todos" role="region" aria-hidden="true">
+  <section id="view-todos" role="region">
     <header>
       <h1>Todos</h1>
     </header>
 
     <article class="view-content">
-      <ul class="todo-list reset-list">
-        <li>
+      <ul class="todo-list reset-list" role="list">
+        <li role="listitem">
           <label>
             <input type="checkbox">
             <span>My task 1</span>
           </label>
           <input type="text" aria-hidden="true">
         </li>
-        <li>
+
+        <li role="listitem">
           <label>
             <input type="checkbox" checked>
             <span>My task 2</span>
@@ -30,14 +31,14 @@
     </article>
 
     <footer>
-      <menu type="toolbar">
-        <button role="menuitem" class="btn-add"></button>
-        <button role="menuitem" class="btn-del" disabled></button>
+      <menu role="toolbar">
+        <button role="menuitem" class="btn-add"><span>Add</span></button>
+        <button role="menuitem" class="btn-del" disabled><span>Delete</span></button>
       </menu>
     </footer>
   </section><!--end view-todos-->
 
-  <section id="view-add" role="region">
+  <section id="view-add" role="region" aria-hidden="true">
     <header>
       <h1>[+] Todo</h1>
     </header>
@@ -45,21 +46,21 @@
     <section class="view-content">
       <div class="wrapper">
         <menu class="options">
-          <ul class="reset-list">
-            <li><a href="#">[Insert Contact]</a></li>
+          <ul class="reset-list" role="list">
+            <li role="listitem"><a href="#">[Insert Contact]</a></li>
           </ul>
         </menu>
 
-        <form>
+        <form aria-owns="btn-add-done">
           <input type="text" name="task" required>
         </form>
       </div>
     </section>
 
     <footer>
-      <menu type="toolbar">
-        <button role="menuitem" class="btn-done" disabled></button>
-        <button role="menuitem" class="btn-del"></button>
+      <menu role="toolbar">
+        <button id="btn-add-done" role="menuitem" class="btn-done" disabled><span>Done</span></button>
+        <button role="menuitem" class="btn-del"><span>Cancel</span></button>
       </menu>
     </footer>
   </section><!--end view-add-->
