@@ -1,7 +1,7 @@
 {
   "version": "0.1",
   "name": "Todos",
-  "description": "My awesome todo app",
+  "description": "Awesome todo app by iFadey",
   "launch_path": "/index.html",
   "icons": {
     "16": "/img/icons/mortar-16.png",
@@ -9,8 +9,8 @@
     "128": "/img/icons/mortar-128.png"
   },
   "developer": {
-    "name": "Your Name",
-    "url": "http://yourawesomeapp.com"
+    "name": "Fawad Hassan",
+    "url": "http://ifadey.com"
   },
   "installs_allowed_from": ["*"],
   "appcache_path": "/cache.manifest",

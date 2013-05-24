@@ -1,6 +1,4 @@
-html, body {
-  height: 100%;
-}
+html, body { height: 100%; }
 
 body {
   background: radial-gradient(ellipse at center, rgba(231,76,60,1) 0%,rgba(192,57,43,1) 100%);
@@ -10,24 +8,18 @@ body {
   font-size: 1.4rem;
   font-weight: 300;
   margin: 0;
-  -moz-tap-highlight-color: rgba(0,0,0,0);
-  tap-highlight-color: rgba(0,0,0,0);
 }
 
 h1, h2, h3, h4, h5, h6 { font-weight: 300; }
 
-h1 {
-  font-size: 3rem;
-}
+h1 { font-size: 3rem; }
 
 a {
   color: #FFA49E;
   text-decoration: none;
   text-shadow: 0px 1px 1px rgba(0,0,0,.3);
 }
-a:hover {
-  color: #fff;
-}
+a:hover { color: #fff; }
 
 input, button, select, textarea {
   border-radius: 0;
@@ -66,7 +58,7 @@ input[type=text], textarea, select {
   margin: 0 0 .5rem 0;
   text-align: right;
 }
-#view-add .options li {
+#view-add .options [role=listitem] {
   margin: .5rem 0;
 }
 #view-add .options a {
@@ -99,29 +91,32 @@ input[type=text], textarea, select {
   position: fixed;
   text-align: center;
 }
-[role=region] > footer > menu[type=toolbar] {
+[role=region] > footer > menu[role=toolbar] {
   margin: 0;
   padding: 0;
 }
 
-menu[type=toolbar] > [role=menuitem] {
+menu[role=toolbar] > [role=menuitem] {
   border: none;
   width: 3.5rem;
   height: 3.5rem;
 }
-menu[type=toolbar] > [role=menuitem]:disabled {
+menu[role=toolbar] > [role=menuitem] > span {
+  display: none;
+}
+menu[role=toolbar] > [role=menuitem]:disabled {
   opacity: .2;
 }
-menu[type=toolbar] > [role=menuitem]:hover {
+menu[role=toolbar] > [role=menuitem]:hover {
   background-color: rgba(255,255,255,.1);
 }
-menu[type=toolbar] > .btn-done {
+menu[role=toolbar] > .btn-done {
   background: url(../img/check.svg) no-repeat center center;
 }
-menu[type=toolbar] > .btn-add {
+menu[role=toolbar] > .btn-add {
   background: url(../img/add.svg) no-repeat center center;
 }
-menu[type=toolbar] > .btn-del {
+menu[role=toolbar] > .btn-del {
   background: url(../img/del.svg) no-repeat center center;
 }
 
@@ -136,10 +131,6 @@ menu[type=toolbar] > .btn-del {
 .todo-list > li:last-child,
 .todo-list > li:last-child > label {
   border-bottom: none;
-}
-.todo-list label > input[type=checkbox] {
-
-  transition: all .5s;
 }
 .todo-list label > span {
   transition: all .5s;
@@ -160,4 +151,30 @@ menu[type=toolbar] > .btn-del {
 }
 [aria-hidden=true] {
   display: none;
+}
+
+
+/**
+ * Animations
+ */
+.slide-up-in {
+  animation-name: slide-up-in;
+  animation-duration: .6s;
+  transform: translateY(0%);
+  opacity: 1;
+}
+@keyframes slide-up-in {
+  0% { transform: translateY(30%); opacity: 0; }
+  100% { transform: translateY(0%); opacity: 1; }
+}
+
+.slide-down-out {
+  animation-name: slide-down-out;
+  animation-duration: .6s;
+  transform: translateY(30%);
+  opacity: 0;
+}
+@keyframes slide-down-out {
+  0% { transform: translateY(0%); opacity: 1; }
+  100% { transform: translateY(30%); opacity: 0; }
 }
