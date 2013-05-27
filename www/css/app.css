@@ -73,6 +73,7 @@ input[type=text], textarea, select {
   background: radial-gradient(ellipse at center, rgba(231,76,60,1) 0%,rgba(192,57,43,1) 100%);
   top: 0; right: 0; bottom: 0; left: 0;
   position: fixed;
+  overflow-x: hidden;
 }
 [role=region] > header {
   margin: .5rem 0 1rem 0;
