@@ -69,6 +69,8 @@ input[type=text], textarea, select {
 /**
  * Modules
  */
+
+/*View Module*/
 [role=region] {
   background: radial-gradient(ellipse at center, rgba(231,76,60,1) 0%,rgba(192,57,43,1) 100%);
   top: 0; right: 0; bottom: 0; left: 0;
@@ -97,37 +99,48 @@ input[type=text], textarea, select {
   padding: 0;
 }
 
-menu[role=toolbar] > [role=menuitem] {
+/*Button Module*/
+.btn {
   border: none;
   width: 3.5rem;
   height: 3.5rem;
 }
-menu[role=toolbar] > [role=menuitem] > span {
+.btn > span {
   display: none;
 }
-menu[role=toolbar] > [role=menuitem]:disabled {
+.btn:disabled {
   opacity: .2;
 }
-menu[role=toolbar] > [role=menuitem]:hover {
-  background-color: rgba(255,255,255,.1);
-}
-menu[role=toolbar] > .btn-done {
+.btn.done {
   background: url(../img/check.svg) no-repeat center center;
 }
-menu[role=toolbar] > .btn-add {
+.btn.add {
   background: url(../img/add.svg) no-repeat center center;
 }
-menu[role=toolbar] > .btn-del {
+.btn.del {
   background: url(../img/del.svg) no-repeat center center;
 }
+.btn.edit {
+  background: url(../img/edit.svg) no-repeat center center;
+}
+.btn:hover {
+  background-color: rgba(255,255,255,.1);
+}
 
+/*List Module*/
 .todo-list > li {
   border-bottom: 1px solid rgba(255,255,255,.1);
+  position: relative;
+}
+.todo-list > li > .btn {
+  top: 0; right: 0;
+  position: absolute;
+  height: 3.9rem;
 }
 .todo-list label {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   display: block;
-  padding: 1rem;
+  padding: 1rem 2.8rem 1rem 1rem;
 }
 .todo-list > li:last-child,
 .todo-list > li:last-child > label {
@@ -136,9 +149,14 @@ menu[role=toolbar] > .btn-del {
 .todo-list label > span {
   transition: all .5s;
 }
-.todo-list label > input[type=checkbox]:checked + span {
+.todo-list input[type=checkbox]:checked + span {
   text-decoration: line-through;
   opacity: .4;
+}
+.todo-list > li > input[type=text] {
+  margin: .4rem;
+  /* removing input padding and margin from 100% */
+  width: calc(100% - 2.3rem);
 }
 
 
@@ -151,7 +169,7 @@ menu[role=toolbar] > .btn-del {
   padding: 0;
 }
 [aria-hidden=true] {
-  display: none;
+  display: none !important;
 }
 
 
@@ -178,4 +196,24 @@ menu[role=toolbar] > .btn-del {
 @keyframes slide-down-out {
   0% { transform: translateY(0%); opacity: 1; }
   100% { transform: translateY(30%); opacity: 0; }
+}
+
+.slide-right-in {
+  animation-name: slide-right-in;
+  animation-duration: .6s;
+  transform: translateX(0%);
+}
+@keyframes slide-right-in {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(0%); }
+}
+
+.slide-left-out {
+  animation-name: slide-left-out;
+  animation-duration: .6s;
+  transform: translateX(-100%);
+}
+@keyframes slide-left-out {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
 }
