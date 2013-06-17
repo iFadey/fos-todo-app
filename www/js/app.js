@@ -4,12 +4,26 @@
 // except for 'app' ones, which are in a sibling
 // directory.
 requirejs.config({
-    baseUrl: 'js/lib',
-    paths: {
-        app: '../app'
-    }
+  baseUrl: 'js/lib',
+
+  // Map jquery to zepto
+  map: { '*': { 'jquery': 'zepto' } },
+
+  paths: {
+    app: '../app',
+    models: '../app/models',
+    collections: '../app/collections',
+    views: '../app/views',
+    templates: '../app/templates',
+    db: '../app/db',
+  }
 });
 
-// Start loading the main app file. Put all of
-// your application logic in there.
-requirejs(['app/main']);
+
+requirejs(['views/ViewTodos', 'collections/todos', 'zepto'], function (ViewTodos, todos, $) {
+  new ViewTodos().render();
+
+  //--- for testing only ---//
+  window.todos = todos; //todos collection
+  window.$ = $;         //zepto
+});

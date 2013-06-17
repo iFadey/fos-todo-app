@@ -1,6 +1,13 @@
 {
   "amd": {},
   "volo": {
-    "baseUrl": "www/js/lib"
+    "baseUrl": "www/js/lib",
+    "dependencies": {
+      "text": "github:requirejs/text/2.0.7",
+      "underscore": "github:amdjs/underscore/1.4.4",
+      "backbone": "github:amdjs/backbone/1.0.0",
+      "zepto": "github:madrobby/zepto/v1.0",
+      "indexeddb-backbonejs-adapter": "github:superfeedr/indexeddb-backbonejs-adapter/master"
+    }
   }
 }
