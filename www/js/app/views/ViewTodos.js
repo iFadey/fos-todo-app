@@ -1,9 +1,27 @@
-define(['backbone', 'views/Todos', 'collections/todos'],
-function (Backbone, TodosView, todos) {
+define(['backbone', 'views/Todos', 'views/ViewAdd', 'collections/todos'],
+function (Backbone, TodosView, ViewAdd, todos) {
   var ViewTodos = Backbone.View.extend({
     el: '#view-todos',
 
-    //events: {},
+    events: {
+      //'tap footer .btn.add' : 'showAddView'
+      'click footer .btn.add' : 'showAddView'
+    },
+
+    showAddView: function () {
+      console.log('showAddView');
+
+      this.viewAdd = new ViewAdd().render();
+
+      //Redefine showAddView
+      this.showAddView = function () {
+        this.viewAdd.render();
+      };
+
+      //Remove existing events and reattach then
+      //using this.events hash
+      this.delegateEvents();
+    },
 
     setBtnDelDisabled: function () {
       if (todos.length) {
