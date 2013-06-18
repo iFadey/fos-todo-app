@@ -4,6 +4,9 @@ function (Backbone, TodosView, ViewAdd, todos) {
     el: '#view-todos',
 
     events: {
+      //'tap footer .btn.del' : 'delTodos',
+      'click footer .btn.del' : 'delTodos',
+
       //'tap footer .btn.add' : 'showAddView'
       'click footer .btn.add' : 'showAddView'
     },
@@ -21,6 +24,29 @@ function (Backbone, TodosView, ViewAdd, todos) {
       //Remove existing events and reattach then
       //using this.events hash
       this.delegateEvents();
+    },
+
+    delTodos: function () {
+      /**
+       * Other possible solution for following if condition is
+       * this.$('#todo-list input[type=checkbox]:checked').length
+       * But I didn't used it just to avoid DOM access
+       */
+
+      if (todos.where({completed: true}).length) {
+        //function as Delete Completed
+
+        if (confirm('Delete Completed Tasks?')) {
+          this.todosView.delCompleted();
+        }
+      } else {
+        if (confirm('Delete All Tasks?')) {
+          //function as Delete All
+          this.todosView.delAll();
+        }
+      }
+
+      this.setBtnDelDisabled();
     },
 
     setBtnDelDisabled: function () {

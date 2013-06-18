@@ -13,6 +13,24 @@ function (Backbone, TodoView, todos) {
       this.listenTo(this.collection, 'sort', this.render);
     },
 
+    delAll: function () {
+      /**
+       * We can remove all models using reset
+       * this.collection.reset([]);
+       * 
+       * But I used remove method because I want remove
+       * event to get fired for each model
+       */
+
+      this.collection.remove(this.collection.models);
+    },
+
+    delCompleted: function () {
+      this.collection.remove(
+        this.collection.where({completed: true})
+      );
+    },
+
     addTodo: function (todo) {
       var todoView = new TodoView({model: todo}).render();
       this.$el.append(todoView.el);
