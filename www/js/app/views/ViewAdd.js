@@ -13,7 +13,9 @@ function (Backbone, TodosView, todos) {
       //'tap .btn.del' : 'cancel',
 
       'keyup #task'         : 'setAddBtnDisabled',
-      'keypress #task'      : 'addTodo'
+      'keypress #task'      : 'addTodo',
+
+      'click #activities .add-contact' : 'addContact'
     },
 
     setAddBtnDisabled: function () {
@@ -48,6 +50,27 @@ function (Backbone, TodosView, todos) {
       if (e.animationName === 'slide-down-out') {
         $target.attr('aria-hidden', 'true');
       }
+    },
+
+    addContact: function () {
+      var self = this,
+          pick = new MozActivity({
+            name: 'pick',
+            data: {
+              type: 'webcontacts/contact'
+             }
+          });
+
+      pick.onsuccess = function () { 
+        var res = this.result;
+        self.$task.val(self.$task.val() + res.name[0] + '(' + res.number + ')');
+      };
+
+      pick.onerror = function () { 
+        alert('ERROR: Unable to add contact!');
+      };
+
+      return false;
     },
 
     initialize: function () {
